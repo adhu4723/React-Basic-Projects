@@ -28,6 +28,12 @@ const QuizApp = () => {
         }
     };
 
+    const handlePrevious = () => {
+        if (currentQuestion > 0) {
+            setCurrentQuestion(currentQuestion - 1);
+        }
+    };
+
     const handleSubmit = () => {
         let calculatedScore = 0;
         quizData.forEach((q, index) => {
@@ -39,6 +45,8 @@ const QuizApp = () => {
         });
         setScore(calculatedScore);
     };
+
+console.log(selectedAnswers);
 
     return (
         <div style={{ textAlign: "center", padding: "20px" }}>
@@ -60,11 +68,14 @@ const QuizApp = () => {
                             </div>
                         ))}
                     </div>
-                    {currentQuestion < quizData.length - 1 ? (
-                        <button onClick={handleNext} disabled={!selectedAnswers[currentQuestion]}>Next</button>
-                    ) : (
-                        <button onClick={handleSubmit} disabled={!selectedAnswers[currentQuestion]}>Submit</button>
-                    )}
+                    <div>
+                        <button onClick={handlePrevious} disabled={currentQuestion === 0}>Previous</button>
+                        {currentQuestion < quizData.length - 1 ? (
+                            <button onClick={handleNext} disabled={!selectedAnswers[currentQuestion]}>Next</button>
+                        ) : (
+                            <button onClick={handleSubmit} disabled={!selectedAnswers[currentQuestion]}>Submit</button>
+                        )}
+                    </div>
                 </div>
             ) : (
                 <div>
