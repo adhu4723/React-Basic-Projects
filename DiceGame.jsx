@@ -75,3 +75,6 @@ const DiceGame = () => {
 };
 
 export default DiceGame;
+
+// "Can you provide a React component for a simple dice game where the player rolls a dice to reach a target score of 50,
+loses a turn on rolling a 1, has 3 chances before game over, and can hold their turn score?
